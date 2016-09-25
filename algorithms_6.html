@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//Write a short adventure game.
+
+		//In the style of Colossal Cave Adventure, write a three-room adventure game. The user should start in one room: “You are in a room. There is an exit to the north and to the west”. Try using the prompt text for output (prompt ("you are in a room..."))
+
+		//The user will type an instruction into the prompt (e.g. “go north”). Figure out what the user wants to do (“go north” or “go west”) and follow that instruction.
+
+		//Put a dragon in the north room and a shield in the west room. They must get the shield (“get shield” in the west room) to get past the dragon. The west room has an exit to the east (the starting room) and the north room has an exit to the north and south (the win condition and the starting room).
+
+		//When they get past the dragon (“go north” in the north room while holding the shield), they win the game.
+
+		//If you are feeling adventurous, try adding even more rooms, items, and challenges to this game!
+
+
+		// prompt user for movement choice and store user location
+
+		var instruction = 0;
+		var isPastDragon = false;
+		var userLocation = "east";
+		var hasShield = false;
+
+
+		while (!isPastDragon) {
+			while (userLocation === "east") {
+				instruction = prompt("You are in a room and there is an exit to the north and west. Where would you like to go?");
+				if (instruction === "go north") {
+					userLocation = "north";
+				} else if (instruction === "go west") {
+					userLocation = "west";
+				} else {
+					alert("Oops, incorrect input! Type either 'go north' or 'go west'.");
+				}
+			}	
+
+			while (hasShield === false && userLocation !== "east") {
+				if (userLocation === "north") {
+					instruction = prompt("Oh no, there's a fire-breathing dragon in the north room and you need a shield to get past him! You must go back to the east room.");
+					if (instruction === "go east") {
+						userLocation = "east";
+					} else {
+						alert("Oops, incorrect input! Your only option is to 'go east'.");
+					}
+				} else if (userLocation === "west")  {
+					instruction = prompt("You have found a shield! You'd better take it with you. There are no doors here, you have to go back to the east where you came from.");
+					hasShield = true;
+					if (instruction === "go east") {
+						userLocation = "east";
+					} else {
+						alert("Oops, incorrect input! Your only option is to 'go east'.");
+					}
+				}
+			}
+
+			if (hasShield === true) {
+				if (userLocation === "west")  {
+					instruction = prompt("You already have the shield. There are no doors here, you have to go back to the east where you came from.");
+					if (instruction === "go east") {
+						userLocation = "east";
+					} else {
+						alert("Oops, incorrect input! Your only option is to 'go east'.");
+					}
+				} else {
+					isPastDragon = true;
+				}
+			}
+		}
+
+		alert("Congratulations, you got past the dragon and reached the treasure! You win!");
+
+
+		// if they are in north room, instruct to go back to east room
+		// if they are in west room tell them they have retrieved shield
+
+		
+		
+
+
+	</script>
+</body>
+</html>

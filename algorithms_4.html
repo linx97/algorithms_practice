@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//Write a JavaScript program which prompts the user for a number and console.logs that number as a string with dashes (-) between each two odd digits. For example if the user types 0253697 the output should be “025-369-7”.
+
+		// var test = [1, 2, 3, 4, 5];
+
+		// test.splice(0, 0, "-");
+
+		// console.log(test);
+
+
+
+		var userNum = prompt("Please enter a 10 digit number.");
+
+		userNum = userNum.split("");
+
+		var i = 0;
+
+		while (i < userNum.length) {
+			if (userNum[i] % 2 === 1) {
+				if (userNum[i + 1] % 2 === 1) {
+					userNum.splice(i + 1, 0, "-");
+				}
+			}
+			i++;
+		}
+
+		userNum = userNum.join("");
+
+		console.log(userNum);
+
+	</script>
+</body>
+</html>

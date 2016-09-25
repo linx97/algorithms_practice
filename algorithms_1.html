@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// Given a string, for example, “Hello World”
+		// Write some code to reverse that string (“dlroW olleH”)
+
+		var string = "Hello, World!";
+		string = string.split("");
+
+		var backwards = [];
+		var i = 0;
+
+		while (i < string.length) {
+			backwards.unshift(string[i]);
+			i++;
+		}
+
+		backwards = backwards.join("");
+		
+		console.log(backwards);
+
+	</script>
+</body>
+</html>
